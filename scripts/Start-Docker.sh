@@ -5,4 +5,5 @@ command -v docker >/dev/null || { echo 'Docker Desktopをインストールし�
 docker info >/dev/null
 docker compose up -d --build
 echo 'JupyterLab: http://localhost:18082 (トークンは次のログ内のURLから取得)'
+echo '専門文書RAG: http://localhost:18083'
 docker compose logs --tail=30 lab

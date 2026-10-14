@@ -27,6 +27,7 @@ def read_rows(path):
 def validate_directory(directory):
     splits = {name: read_rows(Path(directory) / f"{name}.jsonl") for name in ("train", "valid", "test")}
     seen = {}
+    source_splits = {}
     for name, rows in splits.items():
         for row in rows:
             # Split leakage is checked by prompt, even when answers differ.
@@ -34,6 +35,13 @@ def validate_directory(directory):
             if key in seen:
                 raise ValueError(f"質問の重複: {seen[key]} / {name}")
             seen[key] = name
+            # RAG examples derived from the same document must not cross splits.
+            for source in row.get("source_metadata", []):
+                document_id = source.get("document_id")
+                if document_id:
+                    if document_id in source_splits and source_splits[document_id] != name:
+                        raise ValueError(f"同じ元文書が複数の分割に含まれます: {source_splits[document_id]} / {name}")
+                    source_splits[document_id] = name
     return splits
 
 

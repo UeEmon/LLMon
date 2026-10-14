@@ -5,3 +5,7 @@ accelerate==1.8.1
 datasets==3.6.0
 jupyterlab==4.4.5
 numpy==2.2.6
+streamlit==1.46.1
+sentence-transformers==5.0.0
+pypdf==5.7.0
+python-docx==1.2.0

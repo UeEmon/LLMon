@@ -14,5 +14,23 @@ services:
     mem_limit: 12g
     shm_size: 1g
     restart: unless-stopped
+  rag:
+    build: .
+    image: local-llm-m4:dev
+    platform: linux/arm64
+    init: true
+    command: ["streamlit", "run", "/opt/app/rag_ui.py", "--server.address=0.0.0.0", "--server.port=8501", "--server.maxUploadSize=50", "--browser.gatherUsageStats=false"]
+    ports:
+      - "127.0.0.1:18083:8501"
+    volumes:
+      - .:/workspace
+      - hf-cache:/cache/huggingface
+    environment:
+      RAG_CONFIG: /workspace/config/rag.json
+      HF_HUB_DISABLE_TELEMETRY: "1"
+      DO_NOT_TRACK: "1"
+    cpus: 6.0
+    mem_limit: 10g
+    restart: unless-stopped
 volumes:
   hf-cache:

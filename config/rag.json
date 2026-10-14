@@ -1,0 +1,13 @@
+{
+  "embedding_model": "intfloat/multilingual-e5-small",
+  "answer_model": "Qwen/Qwen3-0.6B",
+  "adapter_run": "",
+  "database": "data/private/rag/index.sqlite3",
+  "chunk_chars": 600,
+  "chunk_overlap": 80,
+  "top_k": 4,
+  "min_similarity": 0.75,
+  "context_tokens": 1800,
+  "max_new_tokens": 256,
+  "threads": 6
+}
