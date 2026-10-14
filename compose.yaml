@@ -19,7 +19,7 @@ services:
     image: local-llm-m4:dev
     platform: linux/arm64
     init: true
-    command: ["streamlit", "run", "/opt/app/rag_ui.py", "--server.address=0.0.0.0", "--server.port=8501", "--server.maxUploadSize=50", "--browser.gatherUsageStats=false"]
+    command: ["streamlit", "run", "/opt/app/web_ui.py", "--server.address=0.0.0.0", "--server.port=8501", "--server.maxUploadSize=50", "--browser.gatherUsageStats=false"]
     ports:
       - "127.0.0.1:18083:8501"
     volumes:

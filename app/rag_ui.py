@@ -8,10 +8,13 @@ from rag_documents import extract_document, chunk_sections
 from rag_store import Store
 from rag_answer import evidence_for_prompt, messages_for, validate_answer
 
-st.set_page_config(page_title='LLMon | 専門文書RAG', page_icon='📚', layout='wide')
 st.title('LLMon - 専門文書RAG')
 st.caption('文書を参照して回答。確認済みの質問・回答だけをLoRA追加学習へ。')
-cfg = json.loads(Path(os.environ.get('RAG_CONFIG', 'config/rag.json')).read_text())
+from training_manager import Manager, load_rag_config
+cfg = load_rag_config(os.environ.get('RAG_CONFIG', 'config/rag.json'), Path.cwd())
+if Manager(Path.cwd()).active():
+    st.warning('学習または比較ジョブが実行中です。メモリ確保のためRAGは完了まで休止します。学習ジョブ画面で状況を確認してください。')
+    st.stop()
 store = Store(cfg['database'])
 
 

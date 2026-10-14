@@ -21,7 +21,7 @@ def main():
     import torch
     import transformers
     import peft
-    from transformers import AutoTokenizer, AutoModelForCausalLM, Trainer, TrainingArguments, set_seed
+    from transformers import AutoTokenizer, AutoModelForCausalLM, Trainer, TrainingArguments, TrainerCallback, set_seed
     from peft import LoraConfig, get_peft_model
     from datasets import Dataset
     torch.set_num_threads(cfg["threads"])
@@ -56,8 +56,15 @@ def main():
         eval_strategy="steps", eval_steps=10, logging_steps=1, save_steps=10,
         save_total_limit=2, dataloader_num_workers=0, dataloader_pin_memory=False,
         seed=cfg["seed"])
+    class WebProgress(TrainerCallback):
+        def on_log(self, args, state, control, logs=None, **kwargs):
+            record = {"step": state.global_step, "max_steps": state.max_steps,
+                      **{k:v for k,v in (logs or {}).items() if isinstance(v,(int,float,str))}}
+            with (out / "metrics.jsonl").open("a",encoding="utf-8") as handle:
+                handle.write(json.dumps(record,ensure_ascii=False) + "\n")
+
     trainer = Trainer(model=model, args=training_args, train_dataset=datasets["train"],
-                      eval_dataset=datasets["valid"], data_collator=collate)
+                      eval_dataset=datasets["valid"], data_collator=collate, callbacks=[WebProgress()])
     manifest = {"config": cfg, "base_revision": revision, "engine": "pytorch-cpu",
                 "platform": platform.platform(), "torch": torch.__version__,
                 "transformers": transformers.__version__, "peft": peft.__version__,

@@ -3,6 +3,18 @@
 DockerでCPU LoRA学習を実施する環境と、macOS上でM4 GPUを利用するMLX QLoRA学習環境です。
 このパッケージは環境構築用ファイルです。利用者のMacへのインストール・モデルの取得・実機学習は未実施です。
 
+## Webで学習環境を管理
+
+```bash
+git pull --ff-only
+bash scripts/Start-Web.sh
+```
+
+画面: http://localhost:18083 。「環境概要」「学習データ」「学習設定」「学習ジョブ・ログ」
+「成果物・回答比較」「専門文書RAG」の6画面を用意しています。
+WebからDocker内CPU LoRAの開始・停止、進捗/ログ、アダプター取得、学習前後の回答比較ができます。
+M4 GPUのMLX学習はMac側のターミナル操作です。詳しくは[Web管理の手順](docs/WEB.md)を参照してください。
+
 ## 専門文書を参照するRAGを追加しました
 
 PDF / DOCX / TXT / MDを登録し、文書名・ページ/段落位置と原文を確認しながら質問できます。
