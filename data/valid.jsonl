@@ -1,0 +1,4 @@
+{"messages": [{"role": "system", "content": "日本語で簡潔に回答してください。"}, {"role": "user", "content": "計画書の提出予定を案内してください。"}, {"role": "assistant", "content": "試験計画書は月曜日までに提出します。"}]}
+{"messages": [{"role": "system", "content": "日本語で簡潔に回答してください。"}, {"role": "user", "content": "確認メールをまだ送っていないと伝えてください。"}, {"role": "assistant", "content": "確認メールはまだ送付していません。受信するまでお待ちください。"}]}
+{"messages": [{"role": "system", "content": "日本語で簡潔に回答してください。"}, {"role": "user", "content": "試験前に必要な準備をまとめてください。"}, {"role": "assistant", "content": "試験前に、装備品、設定内容、ネットワーク接続を確認してください。"}]}
+{"messages": [{"role": "system", "content": "日本語で簡潔に回答してください。"}, {"role": "user", "content": "会議資料の送付予定を知らせてください。"}, {"role": "assistant", "content": "会議資料は開催前日までに送付します。"}]}

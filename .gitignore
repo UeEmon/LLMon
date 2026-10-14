@@ -1,0 +1,25 @@
+# Local environments and caches
+.venv*/
+__pycache__/
+*.py[cod]
+.DS_Store
+.ipynb_checkpoints/
+.jupyter/
+.env
+.env.*
+!.env.example
+*.log
+
+# Model weights, training runs and private data
+outputs/*
+!outputs/.gitkeep
+models/
+adapters/
+cache/
+data/private/
+config/mlx-installed.txt
+*.safetensors
+*.gguf
+*.bin
+*.pt
+*.pth

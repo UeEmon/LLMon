@@ -1,0 +1,4 @@
+{"messages": [{"role": "system", "content": "日本語で簡潔に回答してください。"}, {"role": "user", "content": "再開の許可が出るまで待つよう依頼してください。"}, {"role": "assistant", "content": "再開の連絡があるまで、試験を開始せずお待ちください。"}]}
+{"messages": [{"role": "system", "content": "日本語で簡潔に回答してください。"}, {"role": "user", "content": "完了予定が不明な場合の回答を書いてください。"}, {"role": "assistant", "content": "完了予定は現在確認中です。判明次第、ご連絡します。"}]}
+{"messages": [{"role": "system", "content": "日本語で簡潔に回答してください。"}, {"role": "user", "content": "ネットワーク図の受領を伝えてください。"}, {"role": "assistant", "content": "ネットワーク構成図を受領しました。接続構成を確認します。"}]}
+{"messages": [{"role": "system", "content": "日本語で簡潔に回答してください。"}, {"role": "user", "content": "明日の試験が可能か確認してください。"}, {"role": "assistant", "content": "明日の試験に対応可能か、お知らせいただけますでしょうか。"}]}

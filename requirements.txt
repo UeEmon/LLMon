@@ -1,0 +1,7 @@
+torch==2.7.1
+transformers==4.53.3
+peft==0.16.0
+accelerate==1.8.1
+datasets==3.6.0
+jupyterlab==4.4.5
+numpy==2.2.6

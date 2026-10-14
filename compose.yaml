@@ -1,0 +1,18 @@
+name: local-llm-m4
+services:
+  lab:
+    build: .
+    image: local-llm-m4:dev
+    platform: linux/arm64
+    init: true
+    ports:
+      - "127.0.0.1:18082:8888"
+    volumes:
+      - .:/workspace
+      - hf-cache:/cache/huggingface
+    cpus: 6.0
+    mem_limit: 12g
+    shm_size: 1g
+    restart: unless-stopped
+volumes:
+  hf-cache:
